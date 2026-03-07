@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gd86krrfpsuv" path="res://Scenes/Player.tscn" id="1_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://dtortcfmc5gib" path="res://Assets/Top down tile set 1.png" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://35c3y47gjih3" path="res://Scenes/Fire.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://bmmf58yyn1glh" path="res://Scenes/main_menu_animation.tscn" id="4_3dryh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("2_wrm1d")
@@ -286,6 +287,12 @@ position = Vector2(-2, -9)
 offset = Vector2(20, -20)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" parent="CharacterBody2D/Camera2D" unique_id=1843068361 instance=ExtResource("4_3dryh")]
+top_level = true
+position = Vector2(21.499973, -21.000006)
+scale = Vector2(3.3625727, 3.5824177)
+autoplay = "default"
 
 [node name="TileMap" type="TileMap" parent="." unique_id=77774081]
 z_index = -1
