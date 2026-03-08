@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gd86krrfpsuv"]
+[gd_scene format=3 uid="uid://gd86krrfpsuv"]
 
 [ext_resource type="Script" uid="uid://soxrnw87jtvv" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://edh3u3gvb84i" path="res://Assets/Spearman (Wrath Of The Ancients).png" id="1_rpqav"]
@@ -15,18 +15,18 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
-radius = 6.0
-height = 38.0
+radius = 4.0
+height = 26.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1543355192]
 script = ExtResource("1_kyqiw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1223596715]
 texture_filter = 1
-position = Vector2(15.25, -13.25)
-scale = Vector2(2.22, 2.55882)
+position = Vector2(2.25, -4.2500157)
+scale = Vector2(1.18, 1.4999981)
 sprite_frames = SubResource("SpriteFrames_kyqiw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, -12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=703471672]
+position = Vector2(5, -4)
 shape = SubResource("CapsuleShape2D_gntrk")
