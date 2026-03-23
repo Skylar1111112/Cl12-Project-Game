@@ -21,13 +21,20 @@ func _physics_process(_delta):
 	elif Xdirection < 0:
 		animated_sprite.flip_h = true
 
-# Second way of doing movement animation
-	#if Xdirection != 0 or Ydirection != 0:
-	#		animated_sprite.play("Run")
-	#else:
-	#	animated_sprite.play("Idle")
-	
-	if Xdirection == 0 and Ydirection == 0:
-		animated_sprite.play("Idle")
+#attack code
+	var attacking := Input.is_action_pressed("attack")
+
+	var moving
+	if Xdirection != 0 or Ydirection != 0:
+		moving = 1
 	else:
+		moving = 0
+	
+	if moving == 0 and attacking == false:
+		animated_sprite.play("Idle")
+	elif moving == 0 and attacking == true:
+		animated_sprite.play("Attacking")
+	elif moving == 1 and attacking == true:
+		animated_sprite.play("Run+Attacking")
+	elif moving == 1 and attacking == false:
 		animated_sprite.play("Run")

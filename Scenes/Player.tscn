@@ -1,33 +1,61 @@
 [gd_scene format=3 uid="uid://gd86krrfpsuv"]
 
 [ext_resource type="Script" uid="uid://soxrnw87jtvv" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://xvx56lyvcoqf" path="res://Assets/Walking Animation for player.png" id="2_kyqiw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nn08x"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(16, 16, 16, 16)
+[ext_resource type="Texture2D" uid="uid://dtg62ykw370a8" path="res://Assets/Player & Player Items/Player (Fallen Utopia).png" id="2_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
-atlas = ExtResource("2_kyqiw")
+atlas = ExtResource("2_gntrk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
+atlas = ExtResource("2_gntrk")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn08x"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhhdu"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_megsn"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoq75"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kyqiw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nn08x")
+"texture": SubResource("AtlasTexture_kyqiw")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gntrk")
 }],
 "loop": true,
 "name": &"Idle",
@@ -35,19 +63,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gntrk")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dewec")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ixxa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kyqiw")
+"texture": SubResource("AtlasTexture_nn08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ee3")
 }],
 "loop": true,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhhdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_megsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoq75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbbd")
+}],
+"loop": true,
+"name": &"Run+Attacking",
 "speed": 5.0
 }]
 
@@ -63,7 +108,7 @@ texture_filter = 1
 position = Vector2(2, -4)
 scale = Vector2(1.4493749, 1.4999981)
 sprite_frames = SubResource("SpriteFrames_kyqiw")
-animation = &"Idle"
+animation = &"Run+Attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=703471672]
 position = Vector2(2, -4)

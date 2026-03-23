@@ -171,7 +171,7 @@ position = Vector2(2, -12)
 zoom = Vector2(4.5, 4.5)
 position_smoothing_enabled = true
 
-[node name="AnimatedSprite2D" parent="CharacterBody2D/Camera2D" unique_id=1843068361 instance=ExtResource("4_3dryh")]
+[node name="AnimatedSprite2D2" parent="CharacterBody2D" unique_id=1843068361 instance=ExtResource("4_3dryh")]
 top_level = true
 position = Vector2(2.0000033, -12.000003)
 scale = Vector2(1.4970762, 1.5824175)

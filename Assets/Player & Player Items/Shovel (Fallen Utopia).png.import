@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xvx56lyvcoqf"
-path="res://.godot/imported/Walking Animation for player.png-d52bdda7f8edeeed8f5463e51a49b9d9.ctex"
+uid="uid://c2phyoeovkyhu"
+path="res://.godot/imported/Shovel (Fallen Utopia).png-36f97b01a27aa5d158382418d37c4d7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Walking Animation for player.png"
-dest_files=["res://.godot/imported/Walking Animation for player.png-d52bdda7f8edeeed8f5463e51a49b9d9.ctex"]
+source_file="res://Assets/Player & Player Items/Shovel (Fallen Utopia).png"
+dest_files=["res://.godot/imported/Shovel (Fallen Utopia).png-36f97b01a27aa5d158382418d37c4d7b.ctex"]
 
 [params]
 
