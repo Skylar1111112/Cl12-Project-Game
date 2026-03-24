@@ -98,18 +98,18 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 3.0
-height = 20.0
+height = 10.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1543355192]
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1223596715]
 texture_filter = 1
-position = Vector2(2, -4)
-scale = Vector2(1.4493749, 1.4999981)
+position = Vector2(0, -2)
+scale = Vector2(1.2246875, 1.249999)
 sprite_frames = SubResource("SpriteFrames_kyqiw")
 animation = &"Run+Attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=703471672]
-position = Vector2(2, -4)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_gntrk")

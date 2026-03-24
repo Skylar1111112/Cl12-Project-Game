@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 50
+@export var move_speed : float = 40
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(_delta):
@@ -13,7 +13,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	var Xdirection := Input.get_axis("left", "right")
-	
 	var Ydirection := Input.get_axis("up", "down")
 	
 	if Xdirection > 0:
@@ -24,17 +23,18 @@ func _physics_process(_delta):
 #attack code
 	var attacking := Input.is_action_pressed("attack")
 
-	var moving
+	var moving : bool
 	if Xdirection != 0 or Ydirection != 0:
-		moving = 1
+		moving = true
 	else:
-		moving = 0
-	
-	if moving == 0 and attacking == false:
-		animated_sprite.play("Idle")
-	elif moving == 0 and attacking == true:
-		animated_sprite.play("Attacking")
-	elif moving == 1 and attacking == true:
-		animated_sprite.play("Run+Attacking")
-	elif moving == 1 and attacking == false:
+		moving = false
+
+#movement animation
+	if moving == true and attacking == false:
 		animated_sprite.play("Run")
+	elif moving == false and attacking == true:
+		animated_sprite.play("Attacking")
+	elif moving == true and attacking == true:
+		animated_sprite.play("Run+Attacking")
+	else:
+		animated_sprite.play("Idle")
