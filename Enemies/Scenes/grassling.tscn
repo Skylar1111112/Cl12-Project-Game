@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cuja4p2138l7e"]
+
+[ext_resource type="Texture2D" uid="uid://emg0gvc4qrc4" path="res://Enemies/Assets/Grassling Spritesheet.png" id="1_apw7x"]
+[ext_resource type="Script" uid="uid://7u6dkgsnajyd" path="res://Enemies/Scenes/grassling.gd" id="1_q3trv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3trv"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi5eq"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urkmb"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6hdq"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj6ad"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui2vo"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2112"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aarx4"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ue3x"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apuoh"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gyh5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3trv")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi5eq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urkmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6hdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj6ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui2vo")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2112")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aarx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ue3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apuoh")
+}],
+"loop": true,
+"name": &"Run+Attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35o38"]
+radius = 2.236068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3trv"]
+radius = 44.011364
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi5eq"]
+radius = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828]
+safe_margin = 0.1
+script = ExtResource("1_q3trv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392210880]
+texture_filter = 1
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_gyh5s")
+animation = &"Attack"
+offset = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
+shape = SubResource("CircleShape2D_35o38")
+
+[node name="Follow Zone" type="Area2D" parent="." unique_id=910119031]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Follow Zone" unique_id=286941929]
+shape = SubResource("CircleShape2D_q3trv")
+
+[node name="Combat Zone" type="Area2D" parent="." unique_id=1987811972]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Combat Zone" unique_id=1457569743]
+shape = SubResource("CircleShape2D_wi5eq")
+
+[node name="Timer" type="Timer" parent="." unique_id=1348948525]
+wait_time = 0.5
+
+[connection signal="body_entered" from="Follow Zone" to="." method="_on_follow_zone_body_entered"]
+[connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]
+[connection signal="body_entered" from="Combat Zone" to="." method="_on_combat_zone_body_entered"]
+[connection signal="body_exited" from="Combat Zone" to="." method="_on_combat_zone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
