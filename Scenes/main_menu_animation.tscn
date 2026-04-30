@@ -301,7 +301,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 80.0
+"speed": 5.0
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1843068361]
