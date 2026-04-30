@@ -100,14 +100,16 @@ animations = [{
 radius = 2.236068
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3trv"]
-radius = 44.011364
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi5eq"]
-radius = 5.0
+radius = 40.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828]
 safe_margin = 0.1
 script = ExtResource("1_q3trv")
+metadata/FDistance = 6.0
+metadata/CDistance = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392210880]
 texture_filter = 1

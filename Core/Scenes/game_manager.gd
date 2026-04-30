@@ -2,7 +2,9 @@ extends Node
 
 var Health = 30
 var trigger = true
-@onready var health_label: Label = $"../Player/Health_Label"
+@export var gameRunning : bool = false
+@onready var health_label: Label = $"../Player/HUD/Health_Label"
+signal startGame
 
 func remove_point():
 	Health -= 1
@@ -13,6 +15,7 @@ func remove_point():
 
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
-	if trigger == true:
+	if gameRunning == false:
+		startGame.emit()
+		gameRunning = true
 		health_label.text = "Health = " + str(Health) +""
-		trigger = false

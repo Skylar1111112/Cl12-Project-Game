@@ -175,23 +175,15 @@ script = ExtResource("1_nc58w")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(2, -12)
-collision_layer = 3
-collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=172298222]
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
-[node name="HUD" type="Control" parent="Player" unique_id=493754260]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Health_Label" type="Label" parent="Player/HUD" unique_id=1559788104]
+[node name="Health_Label" type="Label" parent="Player" unique_id=1559788104]
 z_index = 1
 texture_filter = 1
-layout_mode = 0
+anchors_preset = -1
 offset_left = -107.0
 offset_top = -56.0
 offset_right = -51.0
@@ -216,7 +208,7 @@ autoplay = "default"
 z_index = 1
 position = Vector2(-29, -28)
 move_speed = 2.0
-metadata/FDistance = 50.0
-metadata/CDistance = 12.0
+metadata/FDistance = 3.0
+metadata/CDistance = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D2" to="GameManager" method="_on_animated_sprite_2d_2_animation_finished"]

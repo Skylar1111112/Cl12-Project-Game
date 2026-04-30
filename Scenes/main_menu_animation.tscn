@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmmf58yyn1glh"]
 
-[ext_resource type="Texture2D" uid="uid://pgrmhfq3oaiy" path="res://Assets/FU_title_animation.png" id="1_55xai"]
+[ext_resource type="Texture2D" uid="uid://pgrmhfq3oaiy" path="res://Core/Assets/FU_title_animation.png" id="1_55xai"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m463p"]
 atlas = ExtResource("1_55xai")
@@ -301,7 +301,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 80.0
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1843068361]

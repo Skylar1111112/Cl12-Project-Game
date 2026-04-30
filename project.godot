@@ -19,6 +19,10 @@ run/main_scene="uid://da8yhpehngct"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="Fallen Utopia"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
