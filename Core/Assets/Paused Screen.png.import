@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2phyoeovkyhu"
-path="res://.godot/imported/Shovel (Fallen Utopia).png-36f97b01a27aa5d158382418d37c4d7b.ctex"
+uid="uid://cdxtq2xahfjct"
+path="res://.godot/imported/Paused Screen.png-6ed42b57afaf0a820c6d8567ca2a05a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player & Player Items/Shovel (Fallen Utopia).png"
-dest_files=["res://.godot/imported/Shovel (Fallen Utopia).png-36f97b01a27aa5d158382418d37c4d7b.ctex"]
+source_file="res://Core/Assets/Paused Screen.png"
+dest_files=["res://.godot/imported/Paused Screen.png-6ed42b57afaf0a820c6d8567ca2a05a3.ctex"]
 
 [params]
 

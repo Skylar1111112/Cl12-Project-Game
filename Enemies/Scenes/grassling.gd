@@ -6,9 +6,9 @@ extends CharacterBody2D
 var player_chase = false
 var player = null
 @onready var timer: Timer = $Timer
- 
-func _physics_process(delta: float) -> void:
-	if player_chase:
+
+func _physics_process(_delta):
+	if player_chase == true and game_manager.freezeAll == false:
 		position += (player.position - position)/move_speed
 		$AnimatedSprite2D.play("Run")
 		if(player.position.x - position.x) < 0:
@@ -41,5 +41,5 @@ func _on_combat_zone_body_exited(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	animated_sprite.play("Attack")
 	player_chase = true
-	game_manager.remove_point()
+	game_manager.damage_player()
 	
