@@ -353,6 +353,38 @@ region = Rect2(513, 364, 171, 91)
 atlas = ExtResource("7_vfgyp")
 region = Rect2(684, 364, 171, 91)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_srtp0"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(855, 364, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgt41"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(1026, 364, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83nf7"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(0, 455, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljtld"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(171, 455, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxvir"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(342, 455, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4i5o"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(513, 455, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3a1f"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(684, 455, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_altti"]
+atlas = ExtResource("7_vfgyp")
+region = Rect2(855, 455, 171, 91)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_55xai"]
 atlas = ExtResource("7_vfgyp")
 region = Rect2(1026, 455, 171, 91)
@@ -461,11 +493,35 @@ animations = [{
 "texture": SubResource("AtlasTexture_7kmfl")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_srtp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgt41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83nf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljtld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxvir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4i5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3a1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_altti")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_55xai")
 }],
 "loop": false,
 "name": &"Intro",
-"speed": 7.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -540,10 +596,8 @@ animation = &"Disabled"
 
 [node name="menuButton" parent="Player/Pause_Screen" unique_id=1667467964 instance=ExtResource("5_kagh2")]
 z_index = 1
-position = Vector2(2.5909092, -7.988552)
+position = Vector2(2.590909, -7.988552)
 scale = Vector2(0.5633112, 0.4894734)
-collision_layer = 2147483648
-collision_mask = 0
 script = ExtResource("6_h1xd6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/Pause_Screen/menuButton" unique_id=362271287]
@@ -564,7 +618,7 @@ z_index = 2
 position = Vector2(2, -13)
 scale = Vector2(1.3567252, 1.4285715)
 sprite_frames = SubResource("SpriteFrames_s6cwh")
-animation = &"Intro"
+animation = &"MainMenu"
 autoplay = "MainMenu"
 frame = 0
 frame_progress = 0.0

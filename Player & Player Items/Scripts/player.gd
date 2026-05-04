@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 40
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
+@onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
 var sprint = 1
 var frozen = 0
 
@@ -57,3 +58,7 @@ func _physics_process(_delta):
 		animated_sprite.play("Run+Attacking")
 	else:
 		animated_sprite.play("Idle")
+
+func _process(delta: float):
+	if game_manager.mainMenu == true:
+		position = title_screen.position

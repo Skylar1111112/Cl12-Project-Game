@@ -3,9 +3,9 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
 @export var move_speed : float = 60
+@onready var timer: Timer = $Timer
 var player_chase = false
 var player = null
-@onready var timer: Timer = $Timer
 
 func _physics_process(_delta):
 	if player_chase == true and game_manager.freezeAll == false:

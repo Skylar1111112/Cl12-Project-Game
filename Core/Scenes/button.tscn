@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://dy7l8aaabb1id"]
 
-[ext_resource type="Script" uid="uid://mq2kx1b45asl" path="res://character_body_2d.gd" id="1_mex8e"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aydft"]
 size = Vector2(51, 19)
 
 [node name="Button" type="CharacterBody2D" unique_id=1667467964]
 input_pickable = true
-script = ExtResource("1_mex8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692882412]
 position = Vector2(2.5, -0.5)

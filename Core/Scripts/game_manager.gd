@@ -4,17 +4,23 @@ var Health = 30
 var freezeAll = true
 @onready var health_label: Label = $"../Player/Health_Label"
 @onready var timer: Timer = $"Pause button"
-@onready var animated_sprite: AnimatedSprite2D = $"../Player/Pause_Screen"
-@onready var title_screen: AnimatedSprite2D = $"../Player/TitleScreen"
+@onready var pause_screen: AnimatedSprite2D = $"../Player/Pause_Screen"
+@onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
 
 var buttonTimer = false
 var mainMenu = true
+var paused = false
 
 func main_menu_change():
 	if mainMenu == true:
 		mainMenu = false
+		paused = false
+		pause_screen.play("Disabled")
+		Health = 30
 	elif mainMenu == false:
 		mainMenu = true
+		paused = false
+		pause_screen.play("Disabled")
 
 func _on_pause_button_timeout() -> void:
 	buttonTimer = false
@@ -22,16 +28,18 @@ func _on_pause_button_timeout() -> void:
 #pause
 func _physics_process(_delta):
 	var pause := Input.is_action_pressed("Pause")
-	if pause == true and freezeAll == false and buttonTimer == false:
+	if pause == true and paused == false and buttonTimer == false and mainMenu == false:
 		freezeAll = true
 		buttonTimer = true
+		paused = true
 		timer.start()
-		animated_sprite.play("Enabled")
-	elif pause == true and freezeAll == true and buttonTimer == false:
+		pause_screen.play("Enabled")
+	elif pause == true and paused == true and buttonTimer == false and mainMenu == false:
 		freezeAll = false
 		buttonTimer = true
+		paused = false
 		timer.start()
-		animated_sprite.play("Disabled")
+		pause_screen.play("Disabled")
 
 #player is hit
 func damage_player():
