@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dclaihjw33m4y"]
+
+[ext_resource type="Script" uid="uid://c4lm8sijs7um6" path="res://Enemies/Scripts/character_body_2d.gd" id="1_nkvgi"]
+[ext_resource type="Texture2D" uid="uid://ddcndw6f7o44s" path="res://Enemies/Assets/thistle (Fallen Utopia).png" id="2_uo62e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axdkc"]
+size = Vector2(4, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6om0"]
+atlas = ExtResource("2_uo62e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eseqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6om0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=929532940]
+script = ExtResource("1_nkvgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115332175]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_axdkc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1786647530]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_eseqm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=687304701]
+rect = Rect2(-3, -3, 7, 5)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

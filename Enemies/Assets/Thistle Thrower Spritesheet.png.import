@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m0i00hwxmemu"
-path="res://.godot/imported/Fire 7.png-5042ece97dffcb0d533c72a00dc82718.ctex"
+uid="uid://cwiqeoepbcyng"
+path="res://.godot/imported/Thistle Thrower Spritesheet.png-5ba545c3b01983f6f56706dd662d706c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fire/Fire 7.png"
-dest_files=["res://.godot/imported/Fire 7.png-5042ece97dffcb0d533c72a00dc82718.ctex"]
+source_file="res://Enemies/Assets/Thistle Thrower Spritesheet.png"
+dest_files=["res://.godot/imported/Thistle Thrower Spritesheet.png-5ba545c3b01983f6f56706dd662d706c.ctex"]
 
 [params]
 

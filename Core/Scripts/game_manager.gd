@@ -1,22 +1,24 @@
 extends Node
 
-var Health = 30
+var Health = 100
 var freezeAll = true
 @onready var health_label: Label = $"../Player/Health_Label"
-@onready var timer: Timer = $"Pause button"
+@onready var pause_timer: Timer = $"Pause button"
 @onready var pause_screen: AnimatedSprite2D = $"../Player/Pause_Screen"
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
-
+@onready var game_over_timer: Timer = $"Game Over"
 var buttonTimer = false
 var mainMenu = true
 var paused = false
 
+#menu change and reset the game
 func main_menu_change():
 	if mainMenu == true:
 		mainMenu = false
 		paused = false
+		freezeAll = true
 		pause_screen.play("Disabled")
-		Health = 30
+		Health = 100
 	elif mainMenu == false:
 		mainMenu = true
 		paused = false
@@ -32,23 +34,27 @@ func _physics_process(_delta):
 		freezeAll = true
 		buttonTimer = true
 		paused = true
-		timer.start()
+		pause_timer.start()
 		pause_screen.play("Enabled")
 	elif pause == true and paused == true and buttonTimer == false and mainMenu == false:
 		freezeAll = false
 		buttonTimer = true
 		paused = false
-		timer.start()
+		pause_timer.start()
 		pause_screen.play("Disabled")
 
 #player is hit
-func damage_player():
+func damage_player(x):
 	if freezeAll == false:
-		Health -= 1
+		Health -= x
 	if Health < 0:
-		pass # trigger game over
+		game_over_timer.start()
+		freezeAll = true
 	else:
 		health_label.text = "Health = " + str(Health) +""
+
+func _on_game_over_timeout() -> void:
+	get_tree().reload_current_scene()
 
 #intro
 func _on_title_screen_animation_finished() -> void:

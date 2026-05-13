@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dk2fo6tia05fk"]
+
+[ext_resource type="Script" uid="uid://djp8n8qjv8xax" path="res://Enemies/Scripts/thistle_thrower.gd" id="1_jj5e2"]
+[ext_resource type="Texture2D" uid="uid://cwiqeoepbcyng" path="res://Enemies/Assets/Thistle Thrower Spritesheet.png" id="2_jj5e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g83d"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a81hd"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmfe"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d2m2"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3raf"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1chl"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w6a2"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51gc1"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gyh5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g83d")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a81hd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d2m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3raf")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1chl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w6a2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51gc1")
+}],
+"loop": true,
+"name": &"Run+Attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35o38"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3trv"]
+radius = 55.714306
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi5eq"]
+radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj5e2"]
+radius = 33.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
+collision_mask = 5
+safe_margin = 0.1
+script = ExtResource("1_jj5e2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392210880]
+texture_filter = 1
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_gyh5s")
+animation = &"Attack"
+offset = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_35o38")
+
+[node name="Follow Zone" type="Area2D" parent="." unique_id=910119031]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Follow Zone" unique_id=286941929]
+scale = Vector2(1.3999995, 1.3999997)
+shape = SubResource("CircleShape2D_q3trv")
+
+[node name="Attack Zone" type="Area2D" parent="." unique_id=1987811972]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Zone" unique_id=1457569743]
+shape = SubResource("CircleShape2D_wi5eq")
+
+[node name="Timer" type="Timer" parent="." unique_id=1348948525]
+wait_time = 0.5
+
+[node name="Run Away Zone" type="Area2D" parent="." unique_id=1223040084]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Run Away Zone" unique_id=175230792]
+shape = SubResource("CircleShape2D_jj5e2")
+
+[node name="Reload Timer" type="Timer" parent="." unique_id=1706730020]
+wait_time = 2.0
+
+[connection signal="body_entered" from="Follow Zone" to="." method="_on_follow_zone_body_entered"]
+[connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]
+[connection signal="body_entered" from="Attack Zone" to="." method="_on_combat_zone_body_entered"]
+[connection signal="body_exited" from="Attack Zone" to="." method="_on_combat_zone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Run Away Zone" to="." method="_on_run_away_zone_body_entered"]
+[connection signal="body_exited" from="Run Away Zone" to="." method="_on_run_away_zone_body_exited"]
+[connection signal="timeout" from="Reload Timer" to="." method="_on_reload_timer_timeout"]

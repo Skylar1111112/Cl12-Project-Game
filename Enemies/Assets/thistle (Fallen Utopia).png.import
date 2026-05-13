@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsct34kr7ev81"
-path="res://.godot/imported/Fire 6.png-94955699ce12fb9285038005bc156592.ctex"
+uid="uid://ddcndw6f7o44s"
+path="res://.godot/imported/thistle (Fallen Utopia).png-c4974312f351dec5d9fdd849f86ee319.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fire/Fire 6.png"
-dest_files=["res://.godot/imported/Fire 6.png-94955699ce12fb9285038005bc156592.ctex"]
+source_file="res://Enemies/Assets/thistle (Fallen Utopia).png"
+dest_files=["res://.godot/imported/thistle (Fallen Utopia).png-c4974312f351dec5d9fdd849f86ee319.ctex"]
 
 [params]
 

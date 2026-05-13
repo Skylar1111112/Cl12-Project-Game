@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
 var sprint = 1
 var frozen = 0
+var attacking: bool = false
 
 #movement
 func _physics_process(_delta):
@@ -41,8 +42,10 @@ func _physics_process(_delta):
 		frozen = 1
 
 #attack code
-	var attacking := Input.is_action_pressed("attack")
-
+	if Input.is_action_just_pressed("attack"):
+		attacking = true
+	elif  Input.is_action_just_released("attack"):
+		attacking = false
 	var moving : bool
 	if Xdirection != 0 or Ydirection != 0:
 		moving = true
@@ -50,15 +53,11 @@ func _physics_process(_delta):
 		moving = false
 
 #movement animation
-	if moving == true and attacking == false and game_manager.freezeAll == false:
+	if moving == true and game_manager.freezeAll == false:
 		animated_sprite.play("Run")
-	elif moving == false and attacking == true and game_manager.freezeAll == false:
-		animated_sprite.play("Attacking")
-	elif moving == true and attacking == true and game_manager.freezeAll == false:
-		animated_sprite.play("Run+Attacking")
 	else:
 		animated_sprite.play("Idle")
 
-func _process(delta: float):
+func _process(_delta: float):
 	if game_manager.mainMenu == true:
 		position = title_screen.position

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cuja4p2138l7e"]
 
 [ext_resource type="Texture2D" uid="uid://emg0gvc4qrc4" path="res://Enemies/Assets/Grassling Spritesheet.png" id="1_apw7x"]
-[ext_resource type="Script" uid="uid://7u6dkgsnajyd" path="res://Enemies/Scenes/grassling.gd" id="1_q3trv"]
+[ext_resource type="Script" uid="uid://7u6dkgsnajyd" path="res://Enemies/Scripts/grassling.gd" id="1_q3trv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3trv"]
 atlas = ExtResource("1_apw7x")
@@ -100,12 +100,13 @@ animations = [{
 radius = 2.236068
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3trv"]
-radius = 44.011364
+radius = 88.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi5eq"]
-radius = 5.0
+radius = 6.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
+collision_mask = 5
 safe_margin = 0.1
 script = ExtResource("1_q3trv")
 
@@ -113,7 +114,7 @@ script = ExtResource("1_q3trv")
 texture_filter = 1
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_gyh5s")
-animation = &"Attack"
+animation = &"Idle"
 offset = Vector2(-0.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
