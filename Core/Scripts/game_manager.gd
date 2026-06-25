@@ -1,6 +1,6 @@
 extends Node
 
-var Health = 100
+var health = 100
 var freezeAll = true
 @onready var health_label: Label = $"../Player/Health_Label"
 @onready var pause_timer: Timer = $"Pause button"
@@ -18,7 +18,7 @@ func main_menu_change():
 		paused = false
 		freezeAll = true
 		pause_screen.play("Disabled")
-		Health = 100
+		health = 100
 	elif mainMenu == false:
 		mainMenu = true
 		paused = false
@@ -46,12 +46,12 @@ func _physics_process(_delta):
 #player is hit
 func damage_player(x):
 	if freezeAll == false:
-		Health -= x
-	if Health <= 0:
+		health -= x
+	if health <= 0:
 		game_over_timer.start()
 		freezeAll = true
 	else:
-		health_label.text = "Health = " + str(Health) +""
+		health_label.text = "Health = " + str(health) +""
 
 func _on_game_over_timeout():
 	get_tree().reload_current_scene()
@@ -59,5 +59,5 @@ func _on_game_over_timeout():
 #intro
 func _on_title_screen_animation_finished() -> void:
 	if title_screen.animation == "Intro":
-		health_label.text = "Health = " + str(Health) +""
+		health_label.text = "Health = " + str(health) +""
 		freezeAll = false

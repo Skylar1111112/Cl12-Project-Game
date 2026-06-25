@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+@onready var health_bar: TextureProgressBar = $TextureProgressBar
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
+@onready var weapon: CharacterBody2D = $"../Player/Weapon"
 @onready var reload_timer: Timer = $"Reload Timer"
 @export var thistle_scene: PackedScene
 var move_speed = 25
@@ -16,14 +18,17 @@ func _init():
 	thistle_scene = preload("res://Enemies/Scenes/thistle.tscn")
 
 func _physics_process(_delta):
+
+#movement
 	if player_chase == true and game_manager.freezeAll == false:
 		velocity = position.direction_to(player.position) * move_speed * running
 		move_and_slide()
+
+#animations
 		if reloading == false:
 			$AnimatedSprite2D.play("Run")
 		elif reloading == true:
 			$AnimatedSprite2D.play("Run+Attack")
-		
 		if(player.position.x - position.x) < 0:
 			$AnimatedSprite2D.flip_h = true
 		else:
@@ -33,17 +38,25 @@ func _physics_process(_delta):
 	elif reloading == true:
 		$AnimatedSprite2D.play("Attack")
 
+#death
 	if health < 1:
 		queue_free()
 
+#reload
 	if can_attack == true:
 		if reloading == false:
 			reloading = true
 			reload_timer.start()
 			attack()
 
+#health bar
+	health_bar.value = health
+
 func damage():
-	health = (health - 5)
+	if weapon.weapon == "Sickle":
+		health = (health - 5)
+	elif weapon.weapon == "Polesaw":
+		health = (health - 10)
 
 func _on_follow_zone_body_entered(body: Node2D) -> void:
 	player = body

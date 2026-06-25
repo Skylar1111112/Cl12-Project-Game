@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://djp8n8qjv8xax" path="res://Enemies/Scripts/thistle_thrower.gd" id="1_jj5e2"]
 [ext_resource type="Texture2D" uid="uid://cwiqeoepbcyng" path="res://Enemies/Assets/Thistle Thrower Spritesheet.png" id="2_jj5e2"]
+[ext_resource type="Texture2D" uid="uid://db50q2ofxpwrt" path="res://Enemies/Assets/health_bar_background.png" id="3_a81hd"]
+[ext_resource type="Texture2D" uid="uid://1qoca5hqe3ti" path="res://Enemies/Assets/health_bar_progress.png" id="4_8vmfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0g83d"]
 atlas = ExtResource("2_jj5e2")
@@ -132,6 +134,16 @@ shape = SubResource("CircleShape2D_jj5e2")
 
 [node name="Reload Timer" type="Timer" parent="." unique_id=1706730020]
 wait_time = 2.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2001314555]
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 35.0
+offset_bottom = 25.0
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("3_a81hd")
+texture_progress = ExtResource("4_8vmfe")
 
 [connection signal="body_entered" from="Follow Zone" to="." method="_on_follow_zone_body_entered"]
 [connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]

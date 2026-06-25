@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var player: CharacterBody2D = %Player
 @onready var timer: Timer = $Timer
-var weapon = "none"
+var weapon = "Sickle"
 var enemies: Array = []
 var timer_is_going = false
 
@@ -32,11 +32,19 @@ func _process(_delta):
 
 	look_at(get_global_mouse_position())
 
-	if player.attacking == true and enemies != null and timer_is_going == false:
-			for enemy in enemies:
-				enemy.damage()
-			timer.start(0.3)
-			timer_is_going = true
+	if weapon == "Sickle":
+		if player.attacking == true and enemies != null and timer_is_going == false:
+				for enemy in enemies:
+					enemy.damage()
+				timer.start(0.5)
+				timer_is_going = true
+	elif weapon == "Polesaw":
+		if player.attacking == true and enemies != null and timer_is_going == false:
+				for enemy in enemies:
+					enemy.damage()
+				timer.start(1)
+				timer_is_going = true
+
 
 # Picking Weapon
 	var one := Input.is_action_pressed("1")
@@ -47,8 +55,8 @@ func _process(_delta):
 		weapon = "Polesaw"
 	var three := Input.is_action_pressed("3")
 	if three == true:
-		weapon = "Shovel"
-
+		#weapon = "Shovel"
+		pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):

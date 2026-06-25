@@ -3,28 +3,34 @@ extends CharacterBody2D
 @export var move_speed : float = 40
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
+@onready var health_bar: TextureProgressBar = $"Health Bar"
+@onready var stamina_bar: TextureProgressBar = $"Stamina Bar"
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
 var sprint = 1
 var frozen = 0
 var attacking: bool = false
+var stamina = 20
+
+func _physics_process(delta):
 
 #movement
-func _physics_process(_delta):
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-
 	velocity = input_direction * move_speed * sprint * frozen
 	move_and_slide()
 
 #sprint
 	var sprinting := Input.is_action_pressed("sprint")
-	if sprinting == true:
-		sprint = 1.5
+	if sprinting == true and stamina >= 0 and input_direction != Vector2(0,0):
+		stamina -= delta * 10
+		if stamina >= 1:
+			sprint = 1.5
 	else:
 		sprint = 1
-	
+		if stamina <= 20:
+			stamina += delta * 5
 
 #sprite direction
 	var Xdirection := Input.get_axis("left", "right")
@@ -63,6 +69,10 @@ func _physics_process(_delta):
 			animated_sprite.play("Run+Attacking")
 		else:
 			animated_sprite.play("Attacking")
+
+#bars
+	health_bar.value = game_manager.health
+	stamina_bar.value = stamina
 
 func _process(_delta: float):
 	if game_manager.mainMenu == true:
