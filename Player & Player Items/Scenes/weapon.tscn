@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgguqxkpyfm07"]
 
 [ext_resource type="Texture2D" uid="uid://c764r4rr6q0wy" path="res://Player & Player Items/Assets/Polesaw (Fallen Utopia).png" id="1_jtlx1"]
-[ext_resource type="Script" uid="uid://djdmfor6uhlgy" path="res://Player & Player Items/Scripts/character_body_2d.gd" id="1_oe214"]
+[ext_resource type="Script" uid="uid://djdmfor6uhlgy" path="res://Player & Player Items/Scripts/weapon.gd" id="1_oe214"]
 [ext_resource type="Texture2D" uid="uid://c2phyoeovkyhu" path="res://Player & Player Items/Assets/Shovel (Fallen Utopia).png" id="2_oe214"]
 [ext_resource type="Texture2D" uid="uid://cdxtq2xahfjct" path="res://Core/Assets/Paused Screen.png" id="2_va1lt"]
 [ext_resource type="Texture2D" uid="uid://w8dgnplrhjur" path="res://Player & Player Items/Assets/Sickle (Fallen Utopia).png" id="3_va1lt"]

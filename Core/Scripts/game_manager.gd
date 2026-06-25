@@ -47,13 +47,13 @@ func _physics_process(_delta):
 func damage_player(x):
 	if freezeAll == false:
 		Health -= x
-	if Health < 0:
+	if Health <= 0:
 		game_over_timer.start()
 		freezeAll = true
 	else:
 		health_label.text = "Health = " + str(Health) +""
 
-func _on_game_over_timeout() -> void:
+func _on_game_over_timeout():
 	get_tree().reload_current_scene()
 
 #intro

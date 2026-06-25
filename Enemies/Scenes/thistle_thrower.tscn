@@ -125,9 +125,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Zone" unique_id=1457569743]
 shape = SubResource("CircleShape2D_wi5eq")
 
-[node name="Timer" type="Timer" parent="." unique_id=1348948525]
-wait_time = 0.5
-
 [node name="Run Away Zone" type="Area2D" parent="." unique_id=1223040084]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Run Away Zone" unique_id=175230792]
@@ -140,7 +137,6 @@ wait_time = 2.0
 [connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]
 [connection signal="body_entered" from="Attack Zone" to="." method="_on_combat_zone_body_entered"]
 [connection signal="body_exited" from="Attack Zone" to="." method="_on_combat_zone_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Run Away Zone" to="." method="_on_run_away_zone_body_entered"]
 [connection signal="body_exited" from="Run Away Zone" to="." method="_on_run_away_zone_body_exited"]
 [connection signal="timeout" from="Reload Timer" to="." method="_on_reload_timer_timeout"]

@@ -53,10 +53,16 @@ func _physics_process(_delta):
 		moving = false
 
 #movement animation
-	if moving == true and game_manager.freezeAll == false:
-		animated_sprite.play("Run")
-	else:
-		animated_sprite.play("Idle")
+	if attacking == false:
+		if moving == true and game_manager.freezeAll == false:
+			animated_sprite.play("Run")
+		else:
+			animated_sprite.play("Idle")
+	if attacking == true:
+		if moving == true and game_manager.freezeAll == false:
+			animated_sprite.play("Run+Attacking")
+		else:
+			animated_sprite.play("Attacking")
 
 func _process(_delta: float):
 	if game_manager.mainMenu == true:

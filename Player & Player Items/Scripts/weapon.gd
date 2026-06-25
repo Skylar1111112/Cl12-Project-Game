@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $"AnimationPlayer"
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
-@onready var player: CharacterBody2D = $".."
+@onready var player: CharacterBody2D = %Player
 @onready var timer: Timer = $Timer
 var weapon = "none"
 var enemies: Array = []
