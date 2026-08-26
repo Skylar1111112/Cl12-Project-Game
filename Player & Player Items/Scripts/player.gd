@@ -1,15 +1,24 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 40
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
 @onready var health_bar: TextureProgressBar = $"Health Bar"
 @onready var stamina_bar: TextureProgressBar = $"Stamina Bar"
+@onready var dash_duration: Timer = $"Dash Duration"
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
+
+@export var dexterity = 1
+@export var strength = 1
+@export var stamina = 1
+
+var max_stamina = stamina * 20
+var current_stamina = max_stamina
 var sprint = 1
 var frozen = 0
 var attacking: bool = false
-var stamina = 20
+var dash = 1
+var move_speed = dexterity * 40
 
 func _physics_process(delta):
 
@@ -18,19 +27,19 @@ func _physics_process(delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-	velocity = input_direction * move_speed * sprint * frozen
+	velocity = input_direction * move_speed * sprint * frozen * dash
 	move_and_slide()
 
 #sprint
 	var sprinting := Input.is_action_pressed("sprint")
-	if sprinting == true and stamina >= 0 and input_direction != Vector2(0,0):
-		stamina -= delta * 10
-		if stamina >= 1:
+	if sprinting == true and current_stamina >= 0 and input_direction != Vector2(0,0):
+		current_stamina -= delta * 10
+		if current_stamina >= 1:
 			sprint = 1.5
 	else:
 		sprint = 1
-		if stamina <= 20:
-			stamina += delta * 5
+		if current_stamina <= max_stamina:
+			current_stamina += delta * 5
 
 #sprite direction
 	var Xdirection := Input.get_axis("left", "right")
@@ -72,8 +81,22 @@ func _physics_process(delta):
 
 #bars
 	health_bar.value = game_manager.health
-	stamina_bar.value = stamina
+	stamina_bar.value = current_stamina
+	stamina_bar.max_value = max_stamina
+
+#dash
+	if Input.is_action_just_pressed("dash") and current_stamina > 16:
+		current_stamina = current_stamina - 15
+		dash = 6
+		dash_duration.start(0.1)
+
+	if game_manager.game_overing == true:
+		animated_sprite.play("Death")
 
 func _process(_delta: float):
 	if game_manager.mainMenu == true:
 		position = title_screen.position
+
+
+func _on_dash_duration_timeout() -> void:
+	dash = 1

@@ -288,8 +288,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtlx1"]
-radius = 4.0
-height = 13.0
+radius = 5.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_oe214"]
 resource_name = "Sickle"
@@ -316,7 +316,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6, 0)]
+"values": [Vector2(3, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false

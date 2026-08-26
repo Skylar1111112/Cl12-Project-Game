@@ -5,35 +5,83 @@
 [ext_resource type="Texture2D" uid="uid://db50q2ofxpwrt" path="res://Enemies/Assets/health_bar_background.png" id="3_a81hd"]
 [ext_resource type="Texture2D" uid="uid://1qoca5hqe3ti" path="res://Enemies/Assets/health_bar_progress.png" id="4_8vmfe"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0g83d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a81hd"]
 atlas = ExtResource("2_jj5e2")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a81hd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1chl"]
 atlas = ExtResource("2_jj5e2")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w6a2"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51gc1"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1adr"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbxsc"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgosl"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6qml"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml4e8"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaydr"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdc5i"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a52nj"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4k3w"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vmfe"]
 atlas = ExtResource("2_jj5e2")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1d2m2"]
 atlas = ExtResource("2_jj5e2")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3raf"]
 atlas = ExtResource("2_jj5e2")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1chl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_33m6v"]
 atlas = ExtResource("2_jj5e2")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8w6a2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2axvx"]
 atlas = ExtResource("2_jj5e2")
-region = Rect2(32, 16, 16, 16)
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_51gc1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpu40"]
+atlas = ExtResource("2_jj5e2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxcjp"]
 atlas = ExtResource("2_jj5e2")
 region = Rect2(0, 16, 16, 16)
 
@@ -41,32 +89,10 @@ region = Rect2(0, 16, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0g83d")
-}],
-"loop": true,
-"name": &"Attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_a81hd")
 }],
 "loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8vmfe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1d2m2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a3raf")
-}],
-"loop": true,
-"name": &"Run",
+"name": &"Attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -78,6 +104,69 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_51gc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1adr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbxsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgosl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6qml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml4e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaydr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdc5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a52nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4k3w")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmfe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d2m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3raf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33m6v")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2axvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpu40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxcjp")
 }],
 "loop": true,
 "name": &"Run+Attack",
@@ -105,7 +194,7 @@ script = ExtResource("1_jj5e2")
 texture_filter = 1
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_gyh5s")
-animation = &"Attack"
+animation = &"Idle"
 offset = Vector2(-0.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
@@ -113,6 +202,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_35o38")
 
 [node name="Follow Zone" type="Area2D" parent="." unique_id=910119031]
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 2
 
@@ -145,6 +235,9 @@ value = 20.0
 texture_under = ExtResource("3_a81hd")
 texture_progress = ExtResource("4_8vmfe")
 
+[node name="Death Timer" type="Timer" parent="." unique_id=354639697]
+wait_time = 1.92
+
 [connection signal="body_entered" from="Follow Zone" to="." method="_on_follow_zone_body_entered"]
 [connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]
 [connection signal="body_entered" from="Attack Zone" to="." method="_on_combat_zone_body_entered"]
@@ -152,3 +245,4 @@ texture_progress = ExtResource("4_8vmfe")
 [connection signal="body_entered" from="Run Away Zone" to="." method="_on_run_away_zone_body_entered"]
 [connection signal="body_exited" from="Run Away Zone" to="." method="_on_run_away_zone_body_exited"]
 [connection signal="timeout" from="Reload Timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]

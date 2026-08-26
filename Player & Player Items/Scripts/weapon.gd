@@ -9,22 +9,22 @@ var timer_is_going = false
 
 func _process(_delta):
 # animation stuff
-	if weapon == "Sickle" and player.attacking == false:
+	if weapon == "Sickle" and player.attacking == false and timer_is_going == false:
 		animation_player.play("Sickle")
 		animated_sprite.play("Sickle")
-	elif weapon == "Sickle" and player.attacking == true:
+	elif weapon == "Sickle" and player.attacking == true and timer_is_going == false:
 		animated_sprite.play("Sickle Attack")
 		animation_player.play("Sickle")
-	elif weapon == "Polesaw" and player.attacking == false:
+	elif weapon == "Polesaw" and player.attacking == false and timer_is_going == false:
 		animation_player.play("Polesaw")
 		animated_sprite.play("Polesaw")
-	elif weapon == "Polesaw" and player.attacking == true:
+	elif weapon == "Polesaw" and player.attacking == true and timer_is_going == false:
 		animation_player.play("Polesaw")
 		animated_sprite.play("Polesaw Attack")
-	elif weapon == "Shovel" and player.attacking == false:
+	elif weapon == "Shovel" and player.attacking == false and timer_is_going == false:
 		animation_player.play("Shovel")
 		animated_sprite.play("Shovel")
-	elif weapon == "Shovel" and player.attacking == true:
+	elif weapon == "Shovel" and player.attacking == true and timer_is_going == false:
 		animation_player.play("Shovel")
 		animated_sprite.play("Shovel Attack")
 	elif weapon == "none":
@@ -35,14 +35,14 @@ func _process(_delta):
 	if weapon == "Sickle":
 		if player.attacking == true and enemies != null and timer_is_going == false:
 				for enemy in enemies:
-					enemy.damage()
+					enemy.damage(5 * player.strength)
 				timer.start(0.5)
 				timer_is_going = true
 	elif weapon == "Polesaw":
 		if player.attacking == true and enemies != null and timer_is_going == false:
 				for enemy in enemies:
-					enemy.damage()
-				timer.start(1)
+					enemy.damage(10 * player.strength)
+				timer.start(0.95)
 				timer_is_going = true
 
 

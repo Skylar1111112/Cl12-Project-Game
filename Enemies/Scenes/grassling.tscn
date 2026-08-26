@@ -5,59 +5,106 @@
 [ext_resource type="Texture2D" uid="uid://db50q2ofxpwrt" path="res://Enemies/Assets/health_bar_background.png" id="3_urkmb"]
 [ext_resource type="Texture2D" uid="uid://1qoca5hqe3ti" path="res://Enemies/Assets/health_bar_progress.png" id="4_h6hdq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3trv"]
-atlas = ExtResource("1_apw7x")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wi5eq"]
-atlas = ExtResource("1_apw7x")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_urkmb"]
 atlas = ExtResource("1_apw7x")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6hdq"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj6ad"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui2vo"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2112"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aarx4"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ue3x"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(32, 16, 16, 16)
+region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apuoh"]
 atlas = ExtResource("1_apw7x")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyh5s"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35o38"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3sg5"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luiqp"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puv12"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r71fq"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jy3j"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol5ru"]
+atlas = ExtResource("1_apw7x")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyh5s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q3trv")
+"texture": SubResource("AtlasTexture_urkmb")
 }],
 "loop": true,
 "name": &"Attack",
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_h6hdq")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_fj6ad")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_ui2vo")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_k2112")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_aarx4")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_8ue3x")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wi5eq")
+"texture": SubResource("AtlasTexture_apuoh")
 }],
 "loop": true,
 "name": &"Idle",
@@ -65,16 +112,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_urkmb")
+"texture": SubResource("AtlasTexture_gyh5s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h6hdq")
+"texture": SubResource("AtlasTexture_35o38")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fj6ad")
+"texture": SubResource("AtlasTexture_l3sg5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ui2vo")
+"texture": SubResource("AtlasTexture_luiqp")
 }],
 "loop": true,
 "name": &"Run",
@@ -82,16 +129,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k2112")
+"texture": SubResource("AtlasTexture_puv12")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aarx4")
+"texture": SubResource("AtlasTexture_r71fq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ue3x")
+"texture": SubResource("AtlasTexture_3jy3j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apuoh")
+"texture": SubResource("AtlasTexture_ol5ru")
 }],
 "loop": true,
 "name": &"Run+Attack",
@@ -139,7 +186,7 @@ shape = SubResource("CircleShape2D_wi5eq")
 [node name="Timer" type="Timer" parent="." unique_id=1348948525]
 wait_time = 0.5
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=81693764]
+[node name="Health Bar" type="TextureProgressBar" parent="." unique_id=81693764]
 offset_left = -4.0
 offset_top = -6.0
 offset_right = 36.0
@@ -149,8 +196,12 @@ value = 5.0
 texture_under = ExtResource("3_urkmb")
 texture_progress = ExtResource("4_h6hdq")
 
+[node name="Kill Timer" type="Timer" parent="." unique_id=1587750707]
+wait_time = 0.96
+
 [connection signal="body_entered" from="Follow Zone" to="." method="_on_follow_zone_body_entered"]
 [connection signal="body_exited" from="Follow Zone" to="." method="_on_follow_zone_body_exited"]
 [connection signal="body_entered" from="Combat Zone" to="." method="_on_combat_zone_body_entered"]
 [connection signal="body_exited" from="Combat Zone" to="." method="_on_combat_zone_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Kill Timer" to="." method="_on_kill_timer_timeout"]

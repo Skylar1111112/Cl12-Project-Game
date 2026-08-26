@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b1t43e2i8at3s"]
+
+[ext_resource type="Script" uid="uid://ceqw7y8tkaae6" path="res://Enemies/Scripts/lightning.gd" id="1_x0d0j"]
+[ext_resource type="Texture2D" uid="uid://dhveho6bph4y5" path="res://Enemies/Assets/lightning_attack.png" id="2_x0d0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axdkc"]
+size = Vector2(4.999997, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aya8o"]
+atlas = ExtResource("2_x0d0j")
+region = Rect2(0, 0, 8, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7dh"]
+atlas = ExtResource("2_x0d0j")
+region = Rect2(8, 0, 8, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6apd1"]
+atlas = ExtResource("2_x0d0j")
+region = Rect2(16, 0, 8, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx7jh"]
+atlas = ExtResource("2_x0d0j")
+region = Rect2(0, 30, 8, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byexb"]
+atlas = ExtResource("2_x0d0j")
+region = Rect2(8, 30, 8, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eseqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aya8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6apd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx7jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byexb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci6t6"]
+size = Vector2(5, 13.5)
+
+[node name="Thistle" type="CharacterBody2D" unique_id=929532940]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_x0d0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115332175]
+position = Vector2(6.0000005, -2)
+scale = Vector2(0.8000004, 1)
+shape = SubResource("RectangleShape2D_axdkc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1786647530]
+texture_filter = 1
+position = Vector2(-1.5220574e-07, -2.7410307)
+rotation = -3.1415927
+scale = Vector2(1, 0.8839312)
+sprite_frames = SubResource("SpriteFrames_eseqm")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+flip_v = true
+
+[node name="Detection Zone" type="Area2D" parent="." unique_id=1878563016]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Zone" unique_id=979766127]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ci6t6")
+
+[node name="Timer" type="Timer" parent="." unique_id=287241846]
+wait_time = 0.5
+
+[connection signal="body_entered" from="Detection Zone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="Detection Zone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

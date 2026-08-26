@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://dclaihjw33m4y"]
+[gd_scene format=3 uid="uid://ceu7i5mgenofu"]
 
-[ext_resource type="Script" uid="uid://c4lm8sijs7um6" path="res://Enemies/Scripts/thistle.gd" id="1_nkvgi"]
-[ext_resource type="Texture2D" uid="uid://ddcndw6f7o44s" path="res://Enemies/Assets/thistle (Fallen Utopia).png" id="2_uo62e"]
+[ext_resource type="Script" uid="uid://c4ab7hethuqoj" path="res://Enemies/Scripts/fireball.gd" id="1_xlods"]
+[ext_resource type="Texture2D" uid="uid://blpnc6n5ms8s1" path="res://Enemies/Assets/fire_ball.png" id="2_xlods"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axdkc"]
-size = Vector2(4.999997, 1)
+size = Vector2(4.999997, 3.9999995)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6om0"]
-atlas = ExtResource("2_uo62e")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa4if"]
+atlas = ExtResource("2_xlods")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eseqm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l6om0")
+"texture": SubResource("AtlasTexture_sa4if")
 }],
 "loop": true,
 "name": &"default",
@@ -22,15 +22,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ci6t6"]
-size = Vector2(4.2972045, 2.7003832)
+size = Vector2(6, 6)
 
-[node name="Thistle" type="CharacterBody2D" unique_id=929532940]
+[node name="Fireball" type="CharacterBody2D" unique_id=929532940]
+position = Vector2(0, 1)
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_nkvgi")
+script = ExtResource("1_xlods")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115332175]
-position = Vector2(5.9604645e-08, -0.5)
+position = Vector2(-4.7683716e-07, -0.99999994)
 scale = Vector2(0.8000004, 1)
 shape = SubResource("RectangleShape2D_axdkc")
 
@@ -40,19 +41,17 @@ position = Vector2(0, -1)
 rotation = -3.1415927
 sprite_frames = SubResource("SpriteFrames_eseqm")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=687304701]
+position = Vector2(-1, 0)
+rect = Rect2(-2, -4, 6, 6)
+
 [node name="Detection Zone" type="Area2D" parent="." unique_id=1878563016]
 collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Zone" unique_id=979766127]
-position = Vector2(-0.5, -0.5)
-rotation = 3.1415925
-scale = Vector2(1.6289661, -1.4812715)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ci6t6")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1212657321]
-rect = Rect2(-4, -2.5, 7, 4)
-
-[connection signal="body_entered" from="Detection Zone" to="." method="_on_detection_zone_body_entered"]
-[connection signal="body_exited" from="Detection Zone" to="." method="_on_detection_zone_body_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Detection Zone" to="." method="_on_detection_zone_body_entered"]

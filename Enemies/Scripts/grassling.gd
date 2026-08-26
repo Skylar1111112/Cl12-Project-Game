@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var death_timer: Timer = $"Kill Timer"
+@onready var health_bar: TextureProgressBar = $"Health Bar"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = %GameManager
 @onready var timer: Timer = $Timer
@@ -9,11 +10,13 @@ var move_speed = 25
 var player_chase = false
 var player = null
 var health = 5
+var freeze = false
+var death_timer_start = false
 
 func _physics_process(_delta):
 
 #movement
-	if player_chase == true and game_manager.freezeAll == false:
+	if player_chase == true and game_manager.freezeAll == false and freeze == false:
 		velocity = position.direction_to(player.position) * move_speed
 		move_and_slide()
 
@@ -27,16 +30,19 @@ func _physics_process(_delta):
 
 #death
 	if health < 1:
-		queue_free()
+		freeze = true
+		$AnimatedSprite2D.play("Death")
+		if get_node("CollisionShape2D") != null:
+			get_node("CollisionShape2D").queue_free()
+		if death_timer_start == false:
+			death_timer_start = true
+			death_timer.start()
 
 #health bar
-		texture_progress_bar.value = health
+	health_bar.value = health
 
-func damage():
-	if weapon.weapon == "Sickle":
-		health = (health - 5)
-	elif weapon.weapon == "Polesaw":
-		health = (health - 10)
+func damage(x):
+	health = (health - x)
 
 func _on_follow_zone_body_entered(body: Node2D) -> void:
 	player = body
@@ -59,3 +65,6 @@ func _on_timer_timeout() -> void:
 func attack():
 	game_manager.damage_player(2)
 	animated_sprite.play("Attack")
+
+func _on_kill_timer_timeout() -> void:
+	queue_free()

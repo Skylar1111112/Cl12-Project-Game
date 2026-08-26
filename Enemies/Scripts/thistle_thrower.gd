@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var game_manager: Node = %GameManager
 @onready var weapon: CharacterBody2D = $"../Player/Weapon"
 @onready var reload_timer: Timer = $"Reload Timer"
+@onready var death_timer: Timer = $"Death Timer"
 @export var thistle_scene: PackedScene
 var move_speed = 25
 var player_chase = false
@@ -13,6 +14,8 @@ var running = 1
 var reloading = false
 var health = 20
 var can_attack = false
+var freeze = false
+var death_timer_start = false
 
 func _init():
 	thistle_scene = preload("res://Enemies/Scenes/thistle.tscn")
@@ -20,30 +23,36 @@ func _init():
 func _physics_process(_delta):
 
 #movement
-	if player_chase == true and game_manager.freezeAll == false:
+	if player_chase == true and game_manager.freezeAll == false and freeze == false:
 		velocity = position.direction_to(player.position) * move_speed * running
 		move_and_slide()
 
 #animations
-		if reloading == false:
+		if reloading == false and freeze == false:
 			$AnimatedSprite2D.play("Run")
-		elif reloading == true:
+		elif reloading == true and freeze == false:
 			$AnimatedSprite2D.play("Run+Attack")
 		if(player.position.x - position.x) < 0:
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
-	elif reloading == false:
+	elif reloading == false and freeze == false:
 		$AnimatedSprite2D.play("Idle")
-	elif reloading == true:
+	elif reloading == true and freeze == false:
 		$AnimatedSprite2D.play("Attack")
 
 #death
 	if health < 1:
-		queue_free()
+		freeze = true
+		$AnimatedSprite2D.play("Death")
+		if get_node("CollisionShape2D") != null:
+			get_node("CollisionShape2D").queue_free()
+		if death_timer_start == false:
+			death_timer_start = true
+			death_timer.start()
 
 #reload
-	if can_attack == true:
+	if can_attack == true and game_manager.freezeAll == false and freeze == false:
 		if reloading == false:
 			reloading = true
 			reload_timer.start()
@@ -52,11 +61,8 @@ func _physics_process(_delta):
 #health bar
 	health_bar.value = health
 
-func damage():
-	if weapon.weapon == "Sickle":
-		health = (health - 5)
-	elif weapon.weapon == "Polesaw":
-		health = (health - 10)
+func damage(x):
+	health = (health - x)
 
 func _on_follow_zone_body_entered(body: Node2D) -> void:
 	player = body
@@ -76,7 +82,7 @@ func _on_combat_zone_body_exited(body: Node2D) -> void:
 func attack():
 	var thistle: CharacterBody2D = thistle_scene.instantiate()
 	thistle.global_position = global_position
-	thistle.velocity = (player.global_position - global_position) * thistle.movespeed
+	thistle.velocity = (player.global_position - global_position) * thistle.movespeed #HELP!!!
 	get_tree().current_scene.add_child(thistle)
 	thistle.player = player
 	thistle.look_at(player.global_position)
@@ -96,3 +102,6 @@ func _on_run_away_zone_body_exited(body: Node2D) -> void:
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
+
+func _on_death_timer_timeout() -> void:
+	queue_free()

@@ -6,10 +6,13 @@ var freezeAll = true
 @onready var pause_timer: Timer = $"Pause button"
 @onready var pause_screen: AnimatedSprite2D = $"../Player/Pause_Screen"
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
-@onready var game_over_timer: Timer = $"Game Over"
+@onready var game_over: Timer = $"Game Over"
+@onready var game: Node2D = $".."
+
 var buttonTimer = false
 var mainMenu = true
 var paused = false
+var game_overing = false
 
 #menu change and reset the game
 func main_menu_change():
@@ -47,15 +50,18 @@ func _physics_process(_delta):
 func damage_player(x):
 	if freezeAll == false:
 		health -= x
-	if health <= 0:
-		game_over_timer.start()
+		pass
+	if health <= 0 or health == 0:
+		if game_overing == false:
+			game_overing = true
+			game_over.start(2)
 		freezeAll = true
 	else:
 		health_label.text = "Health = " + str(health) +""
 
 func _on_game_over_timeout():
 	get_tree().reload_current_scene()
-
+	
 #intro
 func _on_title_screen_animation_finished() -> void:
 	if title_screen.animation == "Intro":
