@@ -678,7 +678,7 @@ ignore_time_scale = true
 [node name="Player" parent="." unique_id=499004816 instance=ExtResource("1_qxrlw")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-20, 4)
+position = Vector2(1, -13)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=172298222]
 zoom = Vector2(5, 5)
