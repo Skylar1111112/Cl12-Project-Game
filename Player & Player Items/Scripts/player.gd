@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var strength = 1
 @export var stamina = 1
 
-var max_stamina = stamina * 20
+var max_stamina = stamina * 30
 var current_stamina = max_stamina
 var sprint = 1
 var frozen = 0
@@ -30,6 +30,9 @@ func _physics_process(delta):
 	velocity = input_direction * move_speed * sprint * frozen * dash
 	move_and_slide()
 
+	if game_manager.game_overing == true:
+		animated_sprite.play("Death")
+
 #sprint
 	var sprinting := Input.is_action_pressed("sprint")
 	if sprinting == true and current_stamina >= 0 and input_direction != Vector2(0,0):
@@ -40,6 +43,8 @@ func _physics_process(delta):
 		sprint = 1
 		if current_stamina <= max_stamina:
 			current_stamina += delta * 5
+			if input_direction == Vector2(0,0):
+				current_stamina += delta * 5
 
 #sprite direction
 	var Xdirection := Input.get_axis("left", "right")

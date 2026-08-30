@@ -35,7 +35,7 @@ func _process(_delta):
 	if weapon == "Sickle":
 		if player.attacking == true and enemies != null and timer_is_going == false:
 				for enemy in enemies:
-					enemy.damage(5 * player.strength)
+					enemy.damage(10 * player.strength)
 				timer.start(0.5)
 				timer_is_going = true
 	elif weapon == "Polesaw":

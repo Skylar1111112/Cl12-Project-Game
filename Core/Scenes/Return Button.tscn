@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bkpfxk3ks1vhj"]
+
+[ext_resource type="Script" uid="uid://cpx3cfi08y3v5" path="res://Core/Scripts/Return Button.gd" id="1_fd0o3"]
+[ext_resource type="Texture2D" uid="uid://cdxtq2xahfjct" path="res://Core/Assets/Paused Screen.png" id="2_0m3k0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn6ja"]
+atlas = ExtResource("2_0m3k0")
+region = Rect2(171, 91, 171, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11n4n"]
+atlas = ExtResource("2_0m3k0")
+region = Rect2(0, 91, 171, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vxys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn6ja")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11n4n")
+}],
+"loop": true,
+"name": &"enabled",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aydft"]
+size = Vector2(51, 19)
+
+[node name="Return Button" type="CharacterBody2D" unique_id=1667467964]
+input_pickable = true
+script = ExtResource("1_fd0o3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=729359137]
+texture_filter = 1
+position = Vector2(-2, 4)
+scale = Vector2(1, 0.8800002)
+sprite_frames = SubResource("SpriteFrames_0vxys")
+animation = &"enabled"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692882412]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_aydft")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var game_manager: Node = %GameManager
 @onready var timer: Timer = $Timer
 @onready var weapon: CharacterBody2D = $"../Player/Weapon"
-var move_speed = 25
+var move_speed = 30
 var player_chase = false
 var player = null
 var health = 5
@@ -52,7 +52,8 @@ func _on_combat_zone_body_entered(body: Node2D) -> void:
 	if body == player:
 		player_chase = false
 		timer.start()
-		attack()
+		if freeze ==  false:
+			attack()
 
 func _on_combat_zone_body_exited(body: Node2D) -> void:
 	if body == player:
@@ -60,7 +61,8 @@ func _on_combat_zone_body_exited(body: Node2D) -> void:
 		timer.stop()
 
 func _on_timer_timeout() -> void:
-	attack()
+	if freeze == false:
+		attack()
 
 func attack():
 	game_manager.damage_player(2)

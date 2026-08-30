@@ -8,6 +8,7 @@ var freezeAll = true
 @onready var title_screen: AnimatedSprite2D = $"../TitleScreen"
 @onready var game_over: Timer = $"Game Over"
 @onready var game: Node2D = $".."
+@onready var game_over_animation: AnimatedSprite2D = $"../Player/Game_Over"
 
 var buttonTimer = false
 var mainMenu = true
@@ -54,14 +55,15 @@ func damage_player(x):
 	if health <= 0 or health == 0:
 		if game_overing == false:
 			game_overing = true
-			game_over.start(2)
+			game_over.start(3)
+			game_over_animation.play("Lose")
 		freezeAll = true
 	else:
 		health_label.text = "Health = " + str(health) +""
 
 func _on_game_over_timeout():
 	get_tree().reload_current_scene()
-	
+
 #intro
 func _on_title_screen_animation_finished() -> void:
 	if title_screen.animation == "Intro":

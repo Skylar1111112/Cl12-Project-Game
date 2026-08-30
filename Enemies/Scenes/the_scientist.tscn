@@ -45,6 +45,10 @@ region = Rect2(100, 200, 50, 50)
 atlas = ExtResource("2_i1yrc")
 region = Rect2(150, 200, 50, 50)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1yrc"]
+atlas = ExtResource("2_i1yrc")
+region = Rect2(150, 200, 50, 50)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcejo"]
 atlas = ExtResource("2_i1yrc")
 region = Rect2(50, 0, 50, 50)
@@ -172,6 +176,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_i1yrc")
+}],
+"loop": true,
+"name": &"Ded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jcejo")
 }, {
 "duration": 1.0,
@@ -275,28 +287,27 @@ height = 37.0
 radius = 55.714306
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1yrc"]
-radius = 5.1108174
-height = 46.630516
+radius = 5.110818
+height = 41.634388
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
+[node name="The Scientist" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
 collision_mask = 5
 safe_margin = 0.1
 script = ExtResource("1_i1yrc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392210880]
 texture_filter = 1
-position = Vector2(0, -5)
+position = Vector2(0.5, -5)
 sprite_frames = SubResource("SpriteFrames_gyh5s")
-animation = &"Idle"
+animation = &"Death"
 offset = Vector2(-0.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
-position = Vector2(-1, -11)
+position = Vector2(0, -11)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_82kno")
 
 [node name="Follow Zone" type="Area2D" parent="." unique_id=910119031]
-visible = false
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 2
@@ -320,16 +331,15 @@ texture_under = ExtResource("3_at6vi")
 texture_progress = ExtResource("4_mu73g")
 
 [node name="Death Timer" type="Timer" parent="." unique_id=354639697]
-wait_time = 1.92
+wait_time = 2.0
 
 [node name="Specific Timer" type="Timer" parent="." unique_id=2030393973]
 
 [node name="Whirlwind Attack Area" type="Area2D" parent="." unique_id=243870360]
-visible = false
 position = Vector2(-0.5, -12.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Whirlwind Attack Area" unique_id=991373552]
-position = Vector2(0.5, 5.5)
+position = Vector2(0.5, 2.5)
 rotation = 1.5707964
 scale = Vector2(3.7176049, 1.2009304)
 shape = SubResource("CapsuleShape2D_i1yrc")
@@ -342,4 +352,5 @@ shape = SubResource("CapsuleShape2D_i1yrc")
 [connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Specific Timer" to="." method="_on_specific_timer_timeout"]
 [connection signal="body_entered" from="Whirlwind Attack Area" to="." method="_on_whirlwind_attack_area_body_entered"]
+[connection signal="body_exited" from="Whirlwind Attack Area" to="." method="_on_whirlwind_attack_area_body_exited"]
 [connection signal="timeout" from="Whirlwind Attack Timer" to="." method="_on_whirlwind_attack_timer_timeout"]

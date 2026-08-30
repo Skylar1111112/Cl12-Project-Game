@@ -185,7 +185,7 @@ radius = 53.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj5e2"]
 radius = 33.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
+[node name="Thistle Thrower" type="CharacterBody2D" unique_id=1635634828 groups=["enemies"]]
 collision_mask = 5
 safe_margin = 0.1
 script = ExtResource("1_jj5e2")
@@ -194,7 +194,7 @@ script = ExtResource("1_jj5e2")
 texture_filter = 1
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_gyh5s")
-animation = &"Idle"
+animation = &"Death"
 offset = Vector2(-0.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274601826]
@@ -223,7 +223,7 @@ shape = SubResource("CircleShape2D_wi5eq")
 shape = SubResource("CircleShape2D_jj5e2")
 
 [node name="Reload Timer" type="Timer" parent="." unique_id=1706730020]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2001314555]
 offset_left = -5.0
